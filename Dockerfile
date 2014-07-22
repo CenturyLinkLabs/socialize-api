@@ -6,3 +6,7 @@ RUN apt-get update && \
 ADD . /tmp
 WORKDIR /tmp
 RUN bundle install --without development
+
+CMD bundle exec rake db:create && \
+  bundle exec rake db:migrate && \
+  bundle exec rails s
